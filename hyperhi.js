@@ -42,6 +42,8 @@ const setupCanvas = canvas => {
   context.lineWidth = 80;
   context.lineCap = 'round';
   context.lineJoin = 'round';
+  context.shadowBlur = 10;
+  context.shadowColor = context.strokeStyle;
 
   context.rect(0, 0, w, h);
   context.fill();
@@ -87,6 +89,22 @@ document.addEventListener('mousemove', e => {
   moveCursor(e.pageX, e.pageY);
   moveDraw(canvasIn, e.pageX, e.pageY);
   moveDraw(canvasOut, e.pageX, e.pageY);
+});
+
+// for touchscreen devices
+document.addEventListener('touchstart', function(event) {
+  isMouseDown = true;
+  startDraw(canvasIn, event.pageX, event.pageY);
+  startDraw(canvasOut, event.pageX, event.pageY);
+});
+
+document.addEventListener('touchend', function() {
+  isMouseDown = false;
+});
+
+document.addEventListener('touchmove', function(event) {
+  moveDraw(canvasIn, event.pageX, event.pageY);
+  moveDraw(canvasOut, event.pageX, event.pageY);
 });
 
 window.addEventListener('resize', () => {
