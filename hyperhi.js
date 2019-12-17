@@ -29,14 +29,26 @@ const setupCanvas = canvas => {
   context.scale(dpi, dpi);
 
   context.fillStyle = 'red';
-  context.rect(100, 100, 600, 400);
+};
+
+// Draw based on three things -> Canvas, X, Y
+const moveDraw = (canvas, x, y) => {
+  const context = canvas.getContext('2d');
+  context.rect(x - 30, y - 20, 60, 40);
   context.fill();
+};
+
+// Start to draw
+const startDraw = canvas => {
+  const context = canvas.getContext('2d');
+  context.fillStyle = 'yellow';
 };
 
 setupCanvas(canvasTag);
 
 document.addEventListener('mousedown', () => {
   growCursor();
+  startDraw(canvasTag);
 });
 
 document.addEventListener('mouseup', () => {
@@ -45,4 +57,5 @@ document.addEventListener('mouseup', () => {
 
 document.addEventListener('mousemove', e => {
   moveCursor(e.pageX, e.pageY);
+  moveDraw(canvasTag, e.pageX, e.pageY);
 });
