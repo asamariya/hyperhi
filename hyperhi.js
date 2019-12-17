@@ -30,8 +30,8 @@ const setupCanvas = canvas => {
   const context = canvas.getContext('2d');
   context.scale(dpi, dpi);
 
-  context.fillStyle = 'white';
-  context.strokeStyle = '#000000';
+  context.fillStyle = '#000000';
+  context.strokeStyle = '#ffffff';
   context.lineWidth = 80;
   context.lineCap = 'round';
   context.lineJoin = 'round';

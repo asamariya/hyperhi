@@ -57,7 +57,5 @@ body {
   background-color: #d4d4d4;
   background-image: url("assets/pattern.svg");
   background-size: 450px 450px;
-  -webkit-animation: bgmove 15s infinite linear;
-          animation: bgmove 15s infinite linear;
 }
 /*# sourceMappingURL=styles.css.map */
