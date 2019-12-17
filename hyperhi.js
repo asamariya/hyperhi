@@ -29,19 +29,23 @@ const setupCanvas = canvas => {
   context.scale(dpi, dpi);
 
   context.fillStyle = 'red';
-};
-
-// Draw based on three things -> Canvas, X, Y
-const moveDraw = (canvas, x, y) => {
-  const context = canvas.getContext('2d');
-  context.rect(x - 30, y - 20, 60, 40);
-  context.fill();
+  context.strokeStyle = 'red';
+  context.lineWidth = 80;
+  context.lineCap = 'round';
+  context.lineJoin = 'round';
 };
 
 // Start to draw
 const startDraw = canvas => {
   const context = canvas.getContext('2d');
   context.fillStyle = 'yellow';
+};
+
+// Draw based on three things -> Canvas, X, Y
+const moveDraw = (canvas, x, y) => {
+  const context = canvas.getContext('2d');
+  context.lineTo(x, y);
+  context.stroke();
 };
 
 setupCanvas(canvasTag);
