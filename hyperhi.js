@@ -1,6 +1,8 @@
 const cursor = document.querySelector('.cursor');
 const canvasTag = document.querySelector('.in');
 
+let isMouseDown = false;
+
 const growCursor = () => {
   cursor.classList.add('is-down');
 };
@@ -36,26 +38,30 @@ const setupCanvas = canvas => {
 };
 
 // Start to draw
-const startDraw = canvas => {
+const startDraw = (canvas, x, y) => {
   const context = canvas.getContext('2d');
-  context.fillStyle = 'yellow';
+  context.moveTo(x, y);
 };
 
 // Draw based on three things -> Canvas, X, Y
 const moveDraw = (canvas, x, y) => {
   const context = canvas.getContext('2d');
-  context.lineTo(x, y);
-  context.stroke();
+  if (isMouseDown) {
+    context.lineTo(x, y);
+    context.stroke();
+  }
 };
 
 setupCanvas(canvasTag);
 
-document.addEventListener('mousedown', () => {
+document.addEventListener('mousedown', e => {
+  isMouseDown = true;
   growCursor();
-  startDraw(canvasTag);
+  startDraw(canvasTag, e.pageX, e.pageY);
 });
 
 document.addEventListener('mouseup', () => {
+  isMouseDown = false;
   shrinkCursor();
 });
 
