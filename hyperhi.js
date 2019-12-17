@@ -40,7 +40,13 @@ const setupCanvas = canvas => {
 // Start to draw
 const startDraw = (canvas, x, y) => {
   const context = canvas.getContext('2d');
+
+  const colors = ['red', 'yellow', 'blue', 'green'];
+  const randomNum = Math.floor(Math.random() * colors.length);
+  context.strokeStyle = colors[randomNum];
+
   context.moveTo(x, y);
+  context.beginPath();
 };
 
 // Draw based on three things -> Canvas, X, Y
