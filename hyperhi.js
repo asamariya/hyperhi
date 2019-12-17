@@ -30,20 +30,23 @@ const setupCanvas = canvas => {
   const context = canvas.getContext('2d');
   context.scale(dpi, dpi);
 
-  context.fillStyle = 'red';
-  context.strokeStyle = 'red';
+  context.fillStyle = 'white';
+  context.strokeStyle = '#000000';
   context.lineWidth = 80;
   context.lineCap = 'round';
   context.lineJoin = 'round';
+
+  context.rect(0, 0, w, h);
+  context.fill();
 };
 
 // Start to draw
 const startDraw = (canvas, x, y) => {
   const context = canvas.getContext('2d');
 
-  const colors = ['red', 'yellow', 'blue', 'green'];
-  const randomNum = Math.floor(Math.random() * colors.length);
-  context.strokeStyle = colors[randomNum];
+  // const colors = ['red', 'yellow', 'blue', 'green'];
+  // const randomNum = Math.floor(Math.random() * colors.length);
+  // context.strokeStyle = colors[randomNum];
 
   context.moveTo(x, y);
   context.beginPath();
