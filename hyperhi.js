@@ -23,6 +23,14 @@ const setupCanvas = canvas => {
   canvas.height = h * dpi;
   canvas.style.width = w + 'px';
   canvas.style.height = h + 'px';
+
+  // Which context is our canvas in? 2d or 3d?
+  const context = canvas.getContext('2d');
+  context.scale(dpi, dpi);
+
+  context.fillStyle = 'red';
+  context.rect(100, 100, 600, 400);
+  context.fill();
 };
 
 setupCanvas(canvasTag);
